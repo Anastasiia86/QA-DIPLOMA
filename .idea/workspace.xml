@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5c3fc14-3037-4701-aaae-67b9d48a761f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/netology/data/SqlHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/CreditCardPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gate-simulator/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/gate-simulator/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gate-simulator/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/gate-simulator/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/TourPurchaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/TourPurchaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/CreditRequestEntityInfo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/DataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/data/DataGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/DataHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/data/DataHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/OrderEntityInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/PaymentEntityInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/PurchasePage.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +163,7 @@
       <workItem from="1680016334284" duration="2349000" />
       <workItem from="1680094907744" duration="6553000" />
       <workItem from="1680185754591" duration="5717000" />
-      <workItem from="1680332868217" duration="10657000" />
+      <workItem from="1680332868217" duration="11137000" />
     </task>
     <servers />
   </component>
