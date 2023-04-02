@@ -1,59 +1,95 @@
 package ru.netology.data;
 
-import lombok.SneakyThrows;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
+import lombok.Value;
 
-import java.sql.DriverManager;
+
 
 public class DataHelper {
-    private static final String datasource = System.getProperty("datasource");
+    static DataGenerator dataGenerator = new DataGenerator();
 
-    @SneakyThrows
-    public static void databaseCleanUp() {
-        var runner = new QueryRunner();
-        var deleteFromOrder = "DELETE FROM order_entity;";
-        var deleteFromCredit = "DELETE FROM credit_request_entity;";
-        var deleteFromPayment = "DELETE FROM payment_entity;";
-
-        try (var connection = DriverManager.getConnection(
-                datasource, "app", "pass")) {
-            runner.update(connection, deleteFromOrder);
-            runner.update(connection, deleteFromCredit);
-            runner.update(connection, deleteFromPayment);
-        }
+    @Value
+    public static class CardInfo {
+        String cardNumber;
+        String year;
+        String month;
+        String owner;
+        String cvc;
     }
 
-    @SneakyThrows
-    public static CreditRequestEntityInfo getCreditRequestInfo() {
-        var runner = new QueryRunner();
-        var creditRequestInfo = "SELECT * FROM credit_request_entity WHERE created = (SELECT MAX(created) FROM credit_request_entity);";
-
-        try (var connection = DriverManager.getConnection(
-                datasource, "app", "pass")) {
-            return runner.query(connection, creditRequestInfo, new BeanHandler<>(CreditRequestEntityInfo.class));
-        }
+    public static CardInfo getApprovedCardInfo() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
-    @SneakyThrows
-    public static PaymentEntityInfo getPaymentInfo() {
-        var runner = new QueryRunner();
-        var paymentInfo = "SELECT * FROM payment_entity WHERE created = (SELECT MAX(created) FROM payment_entity);";
-
-        try (var connection = DriverManager.getConnection(
-                datasource, "app", "pass")) {
-            return runner.query(connection, paymentInfo, new BeanHandler<>(PaymentEntityInfo.class));
-        }
+    public static CardInfo getDeclinedCardInfo() {
+        return new CardInfo(DataGenerator.getDeclinedCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
-    @SneakyThrows
-    public static OrderEntityInfo getOrderInfo() {
-        var runner = new QueryRunner();
-        var orderInfo = "SELECT * FROM order_entity WHERE created = (SELECT MAX(created) FROM order_entity);";
-
-        try (var connection = DriverManager.getConnection(
-                datasource, "app", "pass")) {
-            return runner.query(connection, orderInfo, new BeanHandler<>(OrderEntityInfo.class));
-        }
+    public static CardInfo getInvalidCardInfo() {
+        return new CardInfo(DataGenerator.getInvalidCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
+
+    public static CardInfo getNotFullCardInfo() {
+        return new CardInfo(DataGenerator.getNotFullCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getCardZeroNumber() {
+        return new CardInfo(DataGenerator.getZeroCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getExpiredMonthCardInfo() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getCurrentYear().getYear(), dataGenerator.getExpiredMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getInvalidMonthCardInfo() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getCurrentYear().getYear(), dataGenerator.getInvalidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getZeroMonthCardInfo() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getCurrentYear().getYear(), dataGenerator.getZeroMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getExpiredYearCardInfo() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getExpiredYear().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getZeroYearCardInformation() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getZeroYear().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getInvalidCvc() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getInvalidCvc());
+    }
+
+    public static CardInfo getZeroCvc() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getZeroCvc());
+    }
+
+    public static CardInfo getEmptyCardInfo() {
+        return new CardInfo(" ", " ", " ", " ", " ");
+    }
+
+    public static CardInfo getEmptyCardNumber() {
+        return new CardInfo(" ", dataGenerator.getCurrentYear().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getEmptyMonth() {
+        return new CardInfo(dataGenerator.getApprovedCardNumber(), dataGenerator.getCurrentYear().getYear(), "", DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getEmptyYear() {
+        return new CardInfo(dataGenerator.getApprovedCardNumber(), "", dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getEmptyOwner() {
+        return new CardInfo(dataGenerator.getApprovedCardNumber(), dataGenerator.getCurrentYear().getYear(), dataGenerator.getValidMonth().getMonth(), "", DataGenerator.getValidCvc());
+    }
+
+    public static CardInfo getEmptyCvc() {
+        return new CardInfo(dataGenerator.getApprovedCardNumber(), dataGenerator.getCurrentYear().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getValidOwner(), "");
+    }
+
+    public static CardInfo getInvalidOwnerCard() {
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), dataGenerator.getValidExpirationDate().getYear(), dataGenerator.getValidMonth().getMonth(), DataGenerator.getInvalidOwner(), DataGenerator.getValidCvc());
+    }
+
 }
