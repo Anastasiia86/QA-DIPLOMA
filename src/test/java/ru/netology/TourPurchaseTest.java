@@ -9,8 +9,10 @@ import org.junit.jupiter.api.*;
 import ru.netology.data.DataHelper;
 import ru.netology.page.DashboardPage;
 import ru.netology.data.SqlHelper;
+
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class TourPurchaseTest {
 
     DashboardPage dashboardPage = new DashboardPage();
@@ -103,7 +105,8 @@ public class TourPurchaseTest {
     @Test
     @DisplayName("Оплата по кредитной карте с указанием невалидных значений в поле Владелец")
     public void shouldErrorInvalidOwnerCreditCard() {
-        val creditCardPage = dashboardPage.payByCreditCard();;
+        val creditCardPage = dashboardPage.payByCreditCard();
+        ;
         val invalidOwner = DataHelper.getInvalidOwnerCard();
         creditCardPage.cardInfo(invalidOwner);
         creditCardPage.messInvalidOwner();
@@ -148,6 +151,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(emptyMonth);
         creditCardPage.messEmptyMonthField();
     }
+
     @Test
     @DisplayName("Оплата по кредитной карте с пустым полем Год")
     public void shouldErrorEmptyYearCreditCard() {
@@ -156,6 +160,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(emptyYear);
         creditCardPage.messEmptyYearField();
     }
+
     @Test
     @DisplayName("Оплата по кредитной карте с пустым полем Владелец")
     public void shouldErrorEmptyOwnerCreditCard() {
@@ -164,6 +169,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(emptyOwner);
         creditCardPage.messEmptyOwnerField();
     }
+
     @Test
     @DisplayName("Оплата по кредитной карте с пустым полем Cvc")
     public void shouldErrorEmptyCvcCreditCrad() {
@@ -172,6 +178,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(emptyCvc);
         creditCardPage.messEmptyCvcField();
     }
+
     @Test
     @DisplayName("Оплата по кредитной карте с вводом 000 в поле Cvc")
     public void shouldErrorZeroCvcCreditCard() {
@@ -180,6 +187,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(zeroCvc);
         creditCardPage.messInvalidCvc();
     }
+
     @Test
     @DisplayName("Оплата по кредитной карте с вводом 0 в поле Номер карты")
     public void shouldErrorZeroCardNumCreditCard() {
@@ -188,6 +196,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(zeroCardNum);
         creditCardPage.messZeroNum();
     }
+
     @Test
     @DisplayName("Оплата по кредитной карте с вводом 0 в поле Месяц")
     public void shouldErrorZeroMonthCreditCard() {
@@ -196,6 +205,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(zeroMonth);
         creditCardPage.messInvalidMonth();
     }
+
     @Test
     @DisplayName("Оплата по кредитной карте с вводом 0 в поле Год")
     public void shouldErrorZeroYearCreditCard() {
@@ -204,6 +214,7 @@ public class TourPurchaseTest {
         creditCardPage.cardInfo(zeroYear);
         creditCardPage.messInvalidYear();
     }
+
     @Test
     @DisplayName("Оплата по одобренной дебитовой карте")
     public void shouldPayByAppDCDebitCard() {
@@ -319,6 +330,7 @@ public class TourPurchaseTest {
         debitCardPage.cardInfo(emptyMonth);
         debitCardPage.messEmptyMonthField();
     }
+
     @Test
     @DisplayName("Оплата по дебитовой карте с пустым полем Год")
     public void shouldErrorEmptyYearDebitCard() {
@@ -327,6 +339,7 @@ public class TourPurchaseTest {
         debitCardPage.cardInfo(emptyYear);
         debitCardPage.messEmptyYearField();
     }
+
     @Test
     @DisplayName("Оплата по дебитовой карте с пустым полем Владелец")
     public void shouldErrorEmptyOwnerDebitCard() {
@@ -335,6 +348,7 @@ public class TourPurchaseTest {
         debitCardPage.cardInfo(emptyOwner);
         debitCardPage.messEmptyOwnerField();
     }
+
     @Test
     @DisplayName("Оплата по дебитовой карте с пустым полем Cvc")
     public void shouldErrorEmptyCvcDebitCard() {
@@ -343,6 +357,7 @@ public class TourPurchaseTest {
         debitCardPage.cardInfo(emptyCvc);
         debitCardPage.messEmptyCvcField();
     }
+
     @Test
     @DisplayName("Оплата по дебитовой карте с вводом 000 в поле Cvc")
     public void shouldErrorZeroCvcDebitCard() {
@@ -351,6 +366,7 @@ public class TourPurchaseTest {
         debitCardPage.cardInfo(zeroCvc);
         debitCardPage.messInvalidCvc();
     }
+
     @Test
     @DisplayName("Оплата по дебитовой карте с вводом 0 в поле Номер карты")
     public void shouldErrorZeroCardNumDebit() {
@@ -359,6 +375,7 @@ public class TourPurchaseTest {
         debitCardPage.cardInfo(zeroCardNum);
         debitCardPage.messZeroNum();
     }
+
     @Test
     @DisplayName("Оплата по дебитовой карте с вводом 0 в поле Месяц")
     public void shouldErrorZeroMonthDebitCard() {
@@ -367,6 +384,7 @@ public class TourPurchaseTest {
         debitCardPage.cardInfo(zeroMonth);
         debitCardPage.messInvalidMonth();
     }
+
     @Test
     @DisplayName("Оплата по дебитовой карте с вводом 0 в поле Год")
     public void shouldErrorZeroYearDebitCard() {
