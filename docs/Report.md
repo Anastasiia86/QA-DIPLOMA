@@ -19,9 +19,9 @@
   
  
 
-![image](https://1.png)
+[image](https://monosnap.com/file/D9CuzjmcDswhkJwyqSx7kPzODbVT0i)
 
-![image](pic/2.png)
+[image](https://monosnap.com/file/eX38JNCtkxjS1WUW7nQ3XpNQQDMEVK)
 
   
 ## Дефекты, обнаруженные во время тестирования
@@ -36,7 +36,7 @@
 
 ## Примененное окружение:
 
- - Intellij IDEA (Community edition)
+ - Intellij IDEA 
  - Google Chrome Версия 111.0.5563.147 
  - Java 11
  - GitHub
