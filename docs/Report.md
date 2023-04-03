@@ -19,9 +19,9 @@
   
  
 
-[image](https://monosnap.com/file/D9CuzjmcDswhkJwyqSx7kPzODbVT0i)
+![Image](https://imgur.com/uvsp4Rd.png)
 
-[image](https://monosnap.com/file/eX38JNCtkxjS1WUW7nQ3XpNQQDMEVK)
+![image](https://imgur.com/1NnB2OJ.png)
 
   
 ## Дефекты, обнаруженные во время тестирования
